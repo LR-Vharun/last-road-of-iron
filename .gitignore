@@ -1,0 +1,28 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Ignore logs
+*.log
+npm-debug.log*
+
+# Ignore temporary files
+*.tmp
+.cache/
+
+# Ignore brain/artifacts directory (development only)
+.gemini/
+brain/
+
+# Keep source files
+!src/
+!index.html
+!README.md
+!DEPLOYMENT.md

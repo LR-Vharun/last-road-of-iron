@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Last Road of Iron</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="src/styles/main.css">
+    <link rel="stylesheet" href="src/styles/themes.css">
+</head>
+
+<body>
+    <div id="game-container">
+        <!-- Top Bar: Player Stats -->
+        <header id="top-bar">
+            <div class="stat-group">
+                <span id="hp-display">HP: 100/100</span>
+                <span id="lives-display">Lives: 3/3</span>
+            </div>
+            <div class="stat-group">
+                <span id="gold-display">Gold: 0</span>
+                <span id="level-display">LVL: 1</span>
+            </div>
+            <button id="inventory-btn">Inventory</button>
+        </header>
+
+        <!-- Main Display: Narrative & Images -->
+        <main id="main-display">
+            <div id="image-area">
+                <!-- Dynamic images will go here -->
+                <div class="placeholder-art"></div>
+            </div>
+            <div id="narrative-log">
+                <!-- Text lines will be appended here -->
+                <p class="system-message">Welcome to The Last Road of Iron.</p>
+            </div>
+        </main>
+
+        <!-- Action Area: Choices -->
+        <section id="action-area">
+            <div id="choice-container">
+                <!-- Choice buttons generated via JS -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Modals (Hidden by default) -->
+    <div id="inventory-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Equipment & Inventory</h2>
+            <div id="equipment-slots">
+                <!-- Worn gear -->
+            </div>
+            <div id="inventory-list">
+                <!-- Bag -->
+            </div>
+            <button id="close-inventory">Close</button>
+        </div>
+    </div>
+
+    <!-- JS Imports -->
+    <!-- JS Imports -->
+    <script src="src/js/game.js"></script>
+</body>
+
+</html>

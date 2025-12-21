@@ -1,0 +1,38 @@
+/* src/styles/themes.css */
+/* Specific overrides for the "Last Road of Iron" dark medieval feel */
+
+.narrative-text {
+    color: var(--c-text);
+}
+
+.narrative-emphasis {
+    color: var(--c-accent);
+    font-weight: 600;
+}
+
+.combat-damage-taken {
+    color: var(--c-danger);
+    font-weight: 700;
+}
+
+.combat-damage-dealt {
+    color: #fff;
+    font-weight: 700;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.item-quality-common {
+    color: #a0a0a0;
+}
+
+.item-quality-uncommon {
+    color: #5ea516;
+}
+
+.item-quality-rare {
+    color: #0070dd;
+}
+
+.item-quality-legendary {
+    color: #ff8000;
+}
