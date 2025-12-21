@@ -4,7 +4,7 @@ A dark medieval text-based RPG built with vanilla JavaScript. Journey through 6 
 
 ## 🎮 Play Now
 
-**Live Demo:** [Play on GitHub Pages](https://YOUR_USERNAME.github.io/REPO_NAME/)
+**Live Demo:** [Play on GitHub Pages](https://lr-vharun.github.io/last-road-of-iron/)
 
 ## 🚀 Quick Start
 
@@ -14,8 +14,8 @@ Simply visit the GitHub Pages link above!
 ### Option 2: Run Locally
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/REPO_NAME.git
-cd REPO_NAME
+git clone https://github.com/LR-Vharun/last-road-of-iron.git
+cd last-road-of-iron
 
 # Start a local server (Python)
 python3 -m http.server 8080
@@ -116,7 +116,7 @@ MIT License - Feel free to use and modify
 
 ## 🎮 Credits
 
-Developed by [Your Name]
+Developed by [LR-Vharun](https://github.com/LR-Vharun)
 
 ---
 
