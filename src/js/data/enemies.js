@@ -12,7 +12,7 @@ export const ENEMIES = {
         id: 'mercenary',
         name: 'Hired Mercenary',
         tier: 2,
-        baseStats: { hp: 80, attack: 10, defense: 3, gold: 30 },
+        baseStats: { hp: 70, attack: 8, defense: 1, gold: 30 },
         drops: ['sword_t2', 'helm_t2']
     },
     // Act 3

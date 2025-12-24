@@ -3,14 +3,24 @@ import { getItem, ITEMS } from '../data/items.js';
 
 class GameState {
     constructor() {
+        this.listeners = [];
         this.reset();
+    }
+
+    // Observer Pattern
+    subscribe(callback) {
+        this.listeners.push(callback);
+    }
+
+    notify() {
+        this.listeners.forEach(cb => cb());
     }
 
     reset() {
         this.player = {
             stats: {
-                currentHp: 20,
-                maxHp: 20,
+                currentHp: 100,
+                maxHp: 100,
                 baseAttack: 1,
                 baseDefense: 0,
                 gold: 0,
@@ -30,11 +40,12 @@ class GameState {
             inventory: []
         };
 
-        this.story = {
-            act: 1,
-            nodeId: 'start',
+        this.progress = {
+            storyTier: 1,
+            currentNodeId: 'act1_start',
             flags: {}
         };
+        this.notify();
     }
 
     // Getters for calculated stats
@@ -63,22 +74,26 @@ class GameState {
     heal(amount) {
         const max = this.totalStats.maxHp;
         this.player.stats.currentHp = Math.min(this.player.stats.currentHp + amount, max);
+        this.notify();
     }
 
     takeDamage(amount) {
         this.player.stats.currentHp = Math.max(0, this.player.stats.currentHp - amount);
+        this.notify();
     }
 
     loseLife() {
         if (this.player.stats.lives > 0) {
             this.player.stats.lives--;
         }
+        this.notify();
         return this.player.stats.lives > 0;
     }
 
     recoverLife() {
         if (this.player.stats.lives < CONSTANTS.MAX_LIVES) {
             this.player.stats.lives++;
+            this.notify();
             return true;
         }
         return false;
@@ -86,11 +101,37 @@ class GameState {
 
     addGold(amount) {
         this.player.stats.gold += amount;
+        this.notify();
+    }
+
+    addXp(amount) {
+        this.player.stats.xp += amount;
+        this.checkLevelUp();
+        this.notify(); // checkLevelUp handles its own notify if level up happens, but safer here too
+    }
+
+    checkLevelUp() {
+        const xpThreshold = this.player.stats.level * 100;
+        if (this.player.stats.xp >= xpThreshold) {
+            this.player.stats.xp -= xpThreshold; // Reset/Overflow logic
+            this.player.stats.level++;
+
+            // Increase Max HP
+            this.player.stats.maxHp += 20;
+
+            // Heal fully on level up
+            this.player.stats.currentHp = this.totalStats.maxHp;
+
+            // Recurse in case of massive XP gain
+            this.checkLevelUp();
+            this.notify();
+        }
     }
 
     spendGold(amount) {
         if (this.player.stats.gold >= amount) {
             this.player.stats.gold -= amount;
+            this.notify();
             return true;
         }
         return false;
@@ -108,10 +149,12 @@ class GameState {
         if (idx !== -1) {
             this.player.inventory.splice(idx, 1);
         }
+        this.notify();
     }
 
     addToInventory(item) {
         this.player.inventory.push(item);
+        this.notify();
     }
 
     removeFromInventory(item) {
@@ -119,6 +162,7 @@ class GameState {
         if (idx > -1) {
             this.player.inventory.splice(idx, 1);
         }
+        this.notify();
     }
 
     getAllItems() {

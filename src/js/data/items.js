@@ -34,6 +34,11 @@ export const ITEMS = {
     accessories: [
         { id: 'acc_t1', name: 'Iron Locket', type: 'gear', slot: 'accessory', tier: 1, stats: { hp: 20 }, price: 200, desc: "Contains a faded portrait." },
         { id: 'acc_t2', name: 'Warrior\'s Ring', type: 'gear', slot: 'accessory', tier: 3, stats: { attack: 5, hp: 50 }, price: 1000, desc: "A sign of veteran status." }
+    ],
+
+    // Consumables
+    consumables: [
+        { id: 'pot_hp_small', name: 'Health Potion', type: 'consumable', tier: 1, stats: { heal: 50 }, price: 50, desc: "Restores 50 HP." }
     ]
 
     // Simplified for MVP: Can add Boots/Gloves/Shields similarly if needed, but this covers core stat progression.
@@ -46,7 +51,8 @@ export function getItem(id) {
         ...ITEMS.weapons,
         ...ITEMS.helmets,
         ...ITEMS.armor,
-        ...ITEMS.accessories
+        ...ITEMS.accessories,
+        ...ITEMS.consumables
     ];
     return all.find(i => i.id === id);
 }

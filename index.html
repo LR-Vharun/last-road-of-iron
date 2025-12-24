@@ -14,16 +14,49 @@
 </head>
 
 <body>
-    <div id="game-container">
+    <!-- START SCREEN -->
+    <div id="start-screen" class="start-screen">
+        <div class="start-content">
+            <h1 class="game-title">The Last Road of Iron</h1>
+            <p class="game-subtitle">
+                A narrative RPG of steel, choice, and consequence
+            </p>
+
+            <div class="start-buttons">
+                <button id="new-game-btn">New Game</button>
+                <button id="continue-game-btn" class="hidden">Continue</button>
+            </div>
+        </div>
+    </div>
+    <div id="game-container" class="hidden">
         <!-- Top Bar: Player Stats -->
         <header id="top-bar">
-            <div class="stat-group">
-                <span id="hp-display">HP: 100/100</span>
-                <span id="lives-display">Lives: 3/3</span>
-            </div>
-            <div class="stat-group">
-                <span id="gold-display">Gold: 0</span>
-                <span id="level-display">LVL: 1</span>
+            <div class="stat-group stats-bars">
+                <!-- HP Bar -->
+                <div class="stat-container">
+                    <div class="bar-label">
+                        <span id="hp-text">HP 100/100</span>
+                        <span id="lives-display">Lives: 3/3</span>
+                    </div>
+                    <div class="stat-bar hp-bar">
+                        <div id="hp-fill" class="bar-fill hp-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <!-- XP Bar -->
+                <div class="stat-container">
+                    <div class="bar-label">
+                        <span id="level-display">LVL 1</span>
+                        <span id="xp-text">XP 0/100</span>
+                    </div>
+                    <div class="stat-bar xp-bar">
+                        <div id="xp-fill" class="bar-fill xp-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="gold-container">
+                    <span id="gold-display">Gold: 0</span>
+                </div>
             </div>
             <button id="inventory-btn">Inventory</button>
         </header>
@@ -63,8 +96,7 @@
     </div>
 
     <!-- JS Imports -->
-    <!-- JS Imports -->
-    <script src="src/js/game.js"></script>
+    <script type="module" src="src/js/main.js"></script>
 </body>
 
 </html>
